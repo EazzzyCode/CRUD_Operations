@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.CRUD.Operations.Entity.SignUp;
 import com.CRUD.Operations.Repository.SignUp_Repository;
@@ -19,6 +21,8 @@ public class SignUp_Test_Repository {
 
 	@Autowired
 	SignUp_Repository signUp_Repo;
+	@MockBean
+	PasswordEncoder passwordEncoder;
 	
 	@Test
 	public void ExistsByUserNameTest() {

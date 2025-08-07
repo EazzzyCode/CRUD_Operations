@@ -32,4 +32,5 @@ public class SignUp {
 	private String password;
 	
 	
+	
 }

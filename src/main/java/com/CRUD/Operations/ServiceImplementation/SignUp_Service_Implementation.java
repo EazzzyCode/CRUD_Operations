@@ -23,6 +23,7 @@ public class SignUp_Service_Implementation implements SignUp_Service{
 		signUp.setEmail(signUp_dto.getEmail());
 		signUp.setPassword(signUp_dto.getPassword());
 		
+		
 		 signUp_Repo.save(signUp);
 		 
 		 return signUp.getUserName()+" is saved into the database";

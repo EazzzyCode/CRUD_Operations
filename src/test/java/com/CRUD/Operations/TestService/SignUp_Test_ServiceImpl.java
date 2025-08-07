@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.CRUD.Operations.Entity.SignUp_DTO;
 import com.CRUD.Operations.Repository.SignUp_Repository;
@@ -19,6 +21,8 @@ public class SignUp_Test_ServiceImpl {
 	@Autowired
 	SignUp_Service signUp_Service;
 	
+	@MockBean
+	PasswordEncoder passwordEncoder;
 	
 	@Test
 	public void SignUp_Success_Service_Test() {

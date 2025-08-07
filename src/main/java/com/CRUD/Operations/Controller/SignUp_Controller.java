@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,9 @@ public class SignUp_Controller {
 	@Autowired
 	SignUp_Repository signUp_Repo;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@PostMapping("/User_Signup")
 	public ResponseEntity<?> UserSignup(@RequestBody SignUp_DTO signUp_dto) {
 		if(signUp_Repo.existsByUserName(signUp_dto.getUserName())) {
@@ -34,6 +38,7 @@ public class SignUp_Controller {
 		if(signUp_Repo.existsByEmail(signUp_dto.getEmail())) {
 			return ResponseEntity.ok(Map.of("message","Email already registered"));
 		}
+		signUp_dto.setPassword(passwordEncoder.encode(signUp_dto.getPassword()));
 		return ResponseEntity.ok(signUp_Service.user_SignUp(signUp_dto));
 	}
 }
